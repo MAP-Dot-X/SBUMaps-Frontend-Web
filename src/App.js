@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import 'leaflet/dist/leaflet.css';
 import { MapContainer, TileLayer, Marker, Popup, Polyline } from 'react-leaflet';
-import { outerBusData } from './data/bus/outer/outerBusData';
+import { outerBusData } from './data/bus/outer/outerLoopData';
 
 function App() {
   const [showMarkers, setShowMarkers] = useState(true);
