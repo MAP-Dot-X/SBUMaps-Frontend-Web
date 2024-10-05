@@ -31,6 +31,30 @@ function App() {
 
   return (
 	<div style={{ position: "relative", height: "100vh", width: "100vw" }}>
+	  {/* Toggle Checkboxes */}
+	  {selectedNav === 'DoubleMap' && (
+		<div className="toggleCheckbox">
+		  <label>
+			<input
+			  type="checkbox"
+			  checked={showOuterMarkers}
+			  onChange={handleOuterCheckboxChange}
+			/>
+			{showOuterMarkers ? "Hide Outer Bus" : "Show Outer Bus"}
+		  </label>
+
+		  {/* Inner Loop Toggle */}
+		  <label>
+			<input
+			  type="checkbox"
+			  checked={showInnerMarkers}
+			  onChange={handleInnerCheckboxChange}
+			/>
+			{showInnerMarkers ? "Hide Inner Bus" : "Show Inner Bus"}
+		  </label>
+		</div>
+	  )}
+
 	  {/* Navigation */}
 	  <div className="navBar">
 		<button
@@ -42,9 +66,9 @@ function App() {
 
 		{isNavOpen && (
 		  <div className="sideNav">
-			<button onClick={() => handleNavClick('SBU Bikes')}>SBU Bikes</button>
-			<button onClick={() => handleNavClick('DoubleMap')}>DoubleMap</button>
-			<button onClick={() => handleNavClick('Nutrislice')}>Nutrislice</button>
+			<button className="navButton" onClick={() => handleNavClick('SBU Bikes')}>SBU Bikes</button>
+			<button className="navButton" onClick={() => handleNavClick('DoubleMap')}>DoubleMap</button>
+			<button className="navButton" onClick={() => handleNavClick('Nutrislice')}>Nutrislice</button>
 		  </div>
 		)}
 	  </div>
@@ -88,31 +112,6 @@ function App() {
 		  </Marker>
 		))}
 	  </MapContainer>
-
-	  {/* Toggle Checkboxes */}
-	  {selectedNav === 'DoubleMap' && (
-		<div className="toggleCheckbox" style={{ position: "absolute", top: "10px", right: "10px", zIndex: 1000 }}>
-		  {/* Outer Loop Toggle */}
-		  <label>
-			<input
-			  type="checkbox"
-			  checked={showOuterMarkers}
-			  onChange={handleOuterCheckboxChange}
-			/>
-			{showOuterMarkers ? "Hide Outer Bus" : "Show Outer Bus"}
-		  </label>
-
-		  {/* Inner Loop Toggle */}
-		  <label>
-			<input
-			  type="checkbox"
-			  checked={showInnerMarkers}
-			  onChange={handleInnerCheckboxChange}
-			/>
-			{showInnerMarkers ? "Hide Inner Bus" : "Show Inner Bus"}
-		  </label>
-		</div>
-	  )}
 	</div>
   );
 }
