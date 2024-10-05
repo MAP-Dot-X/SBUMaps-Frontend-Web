@@ -3,7 +3,7 @@ import './App.css';
 import './styles.css';
 import 'leaflet/dist/leaflet.css';
 import { MapContainer, TileLayer, Marker, Popup, Polyline } from 'react-leaflet';
-import { outerBusData } from './data/bus/outer/outerLoopData';
+import { outerBusData } from './data/bus/outerLoopData';
 
 function App() {
   const [showMarkers, setShowMarkers] = useState(true);
