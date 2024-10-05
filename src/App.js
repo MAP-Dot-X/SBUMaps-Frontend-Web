@@ -69,24 +69,14 @@ function App() {
 
       {/* Toggle Button */}
       {selectedNav === 'DoubleMap' && (
-        <button
-          onClick={toggleMarkers}
-          style={{
-            position: "absolute",
-            top: "10px",
-            right: "10px",
-            padding: "10px",
-            backgroundColor: "#007bff",
-            color: "white",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-            zIndex: 1000
-          }}
-        >
-          {showMarkers ? "Hide Outer Bus" : "Show Outer Bus"}
-        </button>
-      )}
+		<button
+			onClick={toggleMarkers}
+			className="toggleButton"
+		>
+			{showMarkers ? "Hide Outer Bus" : "Show Outer Bus"}
+		</button>
+		)}
+
     </div>
   );
 }
