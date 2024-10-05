@@ -6,8 +6,8 @@ import { MapContainer, TileLayer, Marker, Popup, Polyline } from 'react-leaflet'
 import { outerBusData } from './data/bus/outerLoopData';
 
 function App() {
-  const [showMarkers, setShowMarkers] = useState(true);
-  const [showPolyline, setShowPolyline] = useState(true);
+  const [showMarkers, setShowMarkers] = useState(false);
+  const [showPolyline, setShowPolyline] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [selectedNav, setSelectedNav] = useState('');
 
