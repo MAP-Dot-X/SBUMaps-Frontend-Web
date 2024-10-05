@@ -5,12 +5,15 @@ import 'leaflet/dist/leaflet.css';
 import { MapContainer, TileLayer, Marker, Popup, Polyline } from 'react-leaflet';
 import { outerLoopData } from './data/bus/outerLoopData';
 import { innerLoopData } from './data/bus/innerLoopData';
+import { hospitalRouteData } from './data/bus/hospitalRouteData'; 
 
 function App() {
   const [showOuterMarkers, setShowOuterMarkers] = useState(false);
   const [showOuterPolyline, setShowOuterPolyline] = useState(false);
   const [showInnerMarkers, setShowInnerMarkers] = useState(false);
   const [showInnerPolyline, setShowInnerPolyline] = useState(false);
+  const [showHospitalMarkers, setShowHospitalMarkers] = useState(false); 
+  const [showHospitalPolyline, setShowHospitalPolyline] = useState(false); 
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [selectedNav, setSelectedNav] = useState('');
 
@@ -22,6 +25,11 @@ function App() {
   const handleInnerCheckboxChange = () => {
 	setShowInnerMarkers(!showInnerMarkers);
 	setShowInnerPolyline(!showInnerPolyline);
+  };
+
+  const handleHospitalCheckboxChange = () => {
+	setShowHospitalMarkers(!showHospitalMarkers);
+	setShowHospitalPolyline(!showHospitalPolyline);
   };
 
   const handleNavClick = (nav) => {
@@ -43,7 +51,6 @@ function App() {
 			{showOuterMarkers ? "Hide Outer Bus" : "Show Outer Bus"}
 		  </label>
 
-		  {/* Inner Loop Toggle */}
 		  <label>
 			<input
 			  type="checkbox"
@@ -51,6 +58,15 @@ function App() {
 			  onChange={handleInnerCheckboxChange}
 			/>
 			{showInnerMarkers ? "Hide Inner Bus" : "Show Inner Bus"}
+		  </label>
+
+		  <label>
+			<input
+			  type="checkbox"
+			  checked={showHospitalMarkers}
+			  onChange={handleHospitalCheckboxChange}
+			/>
+			{showHospitalMarkers ? "Hide Hospital Bus" : "Show Hospital Bus"}
 		  </label>
 		</div>
 	  )}
@@ -110,6 +126,22 @@ function App() {
 		  <Marker key={index} position={stop.position} icon={innerLoopData.innerLoopStopIcon}>
 			<Popup>{stop.name}</Popup>
 		  </Marker>
+		))}
+
+		{/* Hospital Routes */}
+		{showHospitalPolyline && (
+		  <Polyline
+			positions={hospitalRouteData.busRoute}
+			color="purple" 
+			weight={5}
+		  />
+		)}
+
+		{/* Hospital Stops*/}
+		{showHospitalMarkers && hospitalRouteData.busStops.map((stop, index) => (
+			<Marker key={index} position={stop.position} icon={hospitalRouteData.hospitalRouteStopIcon}>
+				<Popup>{stop.name}</Popup>
+			</Marker>
 		))}
 	  </MapContainer>
 	</div>
