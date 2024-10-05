@@ -11,7 +11,7 @@ function App() {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [selectedNav, setSelectedNav] = useState('');
 
-  const toggleMarkers = () => {
+  const handleCheckboxChange = () => {
     setShowMarkers(!showMarkers);
     setShowPolyline(!showPolyline);
   };
@@ -67,15 +67,19 @@ function App() {
         ))}
       </MapContainer>
 
-      {/* Toggle Button */}
+      {/* Toggle Checkbox */}
       {selectedNav === 'DoubleMap' && (
-		<button
-			onClick={toggleMarkers}
-			className="toggleButton"
-		>
-			{showMarkers ? "Hide Outer Bus" : "Show Outer Bus"}
-		</button>
-		)}
+        <div className="toggleCheckbox" style={{ position: "absolute", top: "10px", right: "10px", zIndex: 1000 }}>
+          <label>
+            <input
+              type="checkbox"
+              checked={showMarkers}
+              onChange={handleCheckboxChange}
+            />
+            {showMarkers ? "Hide Outer Bus" : "Show Outer Bus"}
+          </label>
+        </div>
+      )}
 
     </div>
   );
