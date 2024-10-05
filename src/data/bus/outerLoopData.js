@@ -1,6 +1,6 @@
 import L from 'leaflet';
 
-export const outerBusData = {
+export const outerLoopData = {
 		outerLoopStopIcon: new L.Icon({
 				iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png',
 				iconSize: [25, 41],

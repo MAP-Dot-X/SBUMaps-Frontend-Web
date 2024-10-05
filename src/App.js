@@ -3,7 +3,7 @@ import './App.css';
 import './styles.css';
 import 'leaflet/dist/leaflet.css';
 import { MapContainer, TileLayer, Marker, Popup, Polyline } from 'react-leaflet';
-import { outerBusData } from './data/bus/outerLoopData';
+import { outerLoopData } from './data/bus/outerLoopData';
 
 function App() {
   const [showMarkers, setShowMarkers] = useState(false);
@@ -54,14 +54,14 @@ function App() {
 
         {showPolyline && (
           <Polyline
-            positions={outerBusData.busRoute}
+            positions={outerLoopData.busRoute}
             color="green"
             weight={5}
           />
         )}
 
-        {showMarkers && outerBusData.busStops.map((stop, index) => (
-          <Marker key={index} position={stop.position} icon={outerBusData.outerLoopStopIcon}>
+        {showMarkers && outerLoopData.busStops.map((stop, index) => (
+          <Marker key={index} position={stop.position} icon={outerLoopData.outerLoopStopIcon}>
             <Popup>{stop.name}</Popup>
           </Marker>
         ))}
