@@ -351,7 +351,7 @@ function App() {
 		  </Marker>
 		))}
 
-		{/* Bike share stations */}
+		{/* Bike stations */}
         {showBikeStations && bikeStationData.bikeStations.map((station, index) => (
 			<Marker key={index} position={station.position} icon={bikeStationData.bikeStationIcon}> 
 				<Popup>{station.name}</Popup>
