@@ -77,7 +77,7 @@ function App() {
 							className={`toggleSwitch ${showOuterMarkers ? 'on outer' : ''}`}
 							onClick={handleOuterCheckboxChange}
 							/>
-							<span>Outer Bus</span>
+							<span>Outer Loop</span>
 						</div>
 
 						<div className="toggleButton">
@@ -85,7 +85,7 @@ function App() {
 							className={`toggleSwitch ${showInnerMarkers ? 'on inner' : ''}`} 
 							onClick={handleInnerCheckboxChange}
 							/>
-							<span>Inner Bus</span>
+							<span>Inner Loop</span>
 						</div>
 
 						<div className="toggleButton">
@@ -93,7 +93,7 @@ function App() {
 							className={`toggleSwitch ${showHospitalMarkers ? 'on hospital' : ''}`}
 							onClick={handleHospitalCheckboxChange}
 							/>
-							<span>Hospital Bus</span>
+							<span>Hospital/Chapin</span>
 						</div>
 						</div>
 					)}
