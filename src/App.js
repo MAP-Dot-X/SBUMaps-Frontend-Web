@@ -56,7 +56,7 @@ function App() {
 		</button>
 
 		<div className={`sideNav ${isNavOpen ? 'open' : ''}`}>
-		  <button className="backButton" onClick={closeNav}>← Close</button>
+		  <button className="backButton" onClick={closeNav}>X</button>
 
 		  {selectedNav === '' ? (
 			<>
@@ -69,7 +69,7 @@ function App() {
 
 				{selectedNav === 'DoubleMap' && (
 				<div className="checkboxMenu">
-					<button className="backButton" onClick={handleBackClick}>← Back</button>
+					<button className="backButton" onClick={handleBackClick}> &lt;&lt;</button>
 
 					<div className="toggleButton">
 					<div
