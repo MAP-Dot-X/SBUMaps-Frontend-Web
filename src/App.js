@@ -5,15 +5,15 @@ import 'leaflet/dist/leaflet.css';
 import { MapContainer, TileLayer, Marker, Popup, Polyline } from 'react-leaflet';
 import { outerLoopData } from './data/bus/outerLoopData';
 import { innerLoopData } from './data/bus/innerLoopData';
-import { hospitalRouteData } from './data/bus/hospitalRouteData'; 
+import { hospitalRouteData } from './data/bus/hospitalRouteData';
 
 function App() {
   const [showOuterMarkers, setShowOuterMarkers] = useState(false);
   const [showOuterPolyline, setShowOuterPolyline] = useState(false);
   const [showInnerMarkers, setShowInnerMarkers] = useState(false);
   const [showInnerPolyline, setShowInnerPolyline] = useState(false);
-  const [showHospitalMarkers, setShowHospitalMarkers] = useState(false); 
-  const [showHospitalPolyline, setShowHospitalPolyline] = useState(false); 
+  const [showHospitalMarkers, setShowHospitalMarkers] = useState(false);
+  const [showHospitalPolyline, setShowHospitalPolyline] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [selectedNav, setSelectedNav] = useState('');
 
@@ -34,72 +34,88 @@ function App() {
 
   const handleNavClick = (nav) => {
 	setSelectedNav(nav);
-	setIsNavOpen(false);
+  };
+
+  // Back to main menu
+  const handleBackClick = () => {
+	setSelectedNav(''); 
+  };
+
+  // Closes the menu
+  const closeNav = () => {
+	setIsNavOpen(false); 
+	setSelectedNav(''); 
   };
 
   return (
-	<div style={{ position: "relative", height: "100vh", width: "100vw" }}>
-	  {/* Toggle Checkboxes */}
-	  {selectedNav === 'DoubleMap' && (
-		<div className="toggleCheckbox">
-		  <label>
-			<input
-			  type="checkbox"
-			  checked={showOuterMarkers}
-			  onChange={handleOuterCheckboxChange}
-			/>
-			{showOuterMarkers ? "Hide Outer Bus" : "Show Outer Bus"}
-		  </label>
-
-		  <label>
-			<input
-			  type="checkbox"
-			  checked={showInnerMarkers}
-			  onChange={handleInnerCheckboxChange}
-			/>
-			{showInnerMarkers ? "Hide Inner Bus" : "Show Inner Bus"}
-		  </label>
-
-		  <label>
-			<input
-			  type="checkbox"
-			  checked={showHospitalMarkers}
-			  onChange={handleHospitalCheckboxChange}
-			/>
-			{showHospitalMarkers ? "Hide Hospital Bus" : "Show Hospital Bus"}
-		  </label>
-		</div>
-	  )}
-
+	<div style={{ position: 'relative', height: '100vh', width: '100vw' }}>
 	  {/* Navigation */}
 	  <div className="navBar">
-		<button
-		  className="hamburgerMenu"
-		  onClick={() => setIsNavOpen(!isNavOpen)}
-		>
+		<button className="hamburgerMenu" onClick={() => setIsNavOpen(!isNavOpen)}>
 		  ☰
 		</button>
 
-		{isNavOpen && (
-		  <div className="sideNav">
-			<button className="navButton" onClick={() => handleNavClick('SBU Bikes')}>SBU Bikes</button>
-			<button className="navButton" onClick={() => handleNavClick('DoubleMap')}>DoubleMap</button>
-			<button className="navButton" onClick={() => handleNavClick('Nutrislice')}>Nutrislice</button>
-		  </div>
-		)}
+		<div className={`sideNav ${isNavOpen ? 'open' : ''}`}>
+		  <button className="backButton" onClick={closeNav}>← Close</button>
+
+		  {selectedNav === '' ? (
+			<>
+			  <button className="navButton" onClick={() => handleNavClick('SBU Bikes')}>SBU Bikes</button>
+			  <button className="navButton" onClick={() => handleNavClick('DoubleMap')}>DoubleMap</button>
+			  <button className="navButton" onClick={() => handleNavClick('Nutrislice')}>Nutrislice</button>
+			</>
+		  ) : (
+			<div className="checkboxMenu">
+
+				{selectedNav === 'DoubleMap' && (
+				<div className="checkboxMenu">
+					<button className="backButton" onClick={handleBackClick}>← Back</button>
+
+					<div className="toggleButton">
+					<div
+						className={`toggleSwitch ${showOuterMarkers ? 'on' : ''}`}
+						onClick={handleOuterCheckboxChange}
+					/>
+					<span>Outer Bus</span>
+					</div>
+
+					<div className="toggleButton">
+					<div
+						className={`toggleSwitch ${showInnerMarkers ? 'on' : ''}`}
+						onClick={handleInnerCheckboxChange}
+					/>
+					<span>Inner Bus</span>
+					</div>
+
+					<div className="toggleButton">
+					<div
+						className={`toggleSwitch ${showHospitalMarkers ? 'on' : ''}`}
+						onClick={handleHospitalCheckboxChange}
+					/>
+					<span>Hospital Bus</span>
+					</div>
+				</div>
+				)}
+
+			  {selectedNav === 'SBU Bikes' && <p>Content for SBU Bikes</p>}
+			  {selectedNav === 'Nutrislice' && <p>Content for Nutrislice</p>}
+			</div>
+		  )}
+		</div>
 	  </div>
 
 	  {/* Map Container */}
 	  <MapContainer
 		center={[40.915547526247074, -73.12272596217514]}
 		zoom={15}
-		style={{ height: "100%", width: "100%" }}
+		style={{ height: '100%', width: '100%' }}
 	  >
 		<TileLayer
 		  attribution='&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 		  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 		/>
 
+		{/* Outer Loop Routes */}
 		{showOuterPolyline && (
 		  <Polyline
 			positions={outerLoopData.busRoute}
@@ -108,12 +124,14 @@ function App() {
 		  />
 		)}
 
+		{/* Outer Loop Stops */}
 		{showOuterMarkers && outerLoopData.busStops.map((stop, index) => (
 		  <Marker key={index} position={stop.position} icon={outerLoopData.outerLoopStopIcon}>
 			<Popup>{stop.name}</Popup>
 		  </Marker>
 		))}
 
+		{/* Inner Loop Routes */}
 		{showInnerPolyline && (
 		  <Polyline
 			positions={innerLoopData.busRoute}
@@ -122,6 +140,7 @@ function App() {
 		  />
 		)}
 
+		{/* Inner Loop Stops */}
 		{showInnerMarkers && innerLoopData.busStops.map((stop, index) => (
 		  <Marker key={index} position={stop.position} icon={innerLoopData.innerLoopStopIcon}>
 			<Popup>{stop.name}</Popup>
@@ -132,16 +151,16 @@ function App() {
 		{showHospitalPolyline && (
 		  <Polyline
 			positions={hospitalRouteData.busRoute}
-			color="purple" 
+			color="purple"
 			weight={5}
 		  />
 		)}
 
-		{/* Hospital Stops*/}
+		{/* Hospital Stops */}
 		{showHospitalMarkers && hospitalRouteData.busStops.map((stop, index) => (
-			<Marker key={index} position={stop.position} icon={hospitalRouteData.hospitalRouteStopIcon}>
-				<Popup>{stop.name}</Popup>
-			</Marker>
+		  <Marker key={index} position={stop.position} icon={hospitalRouteData.hospitalRouteStopIcon}>
+			<Popup>{stop.name}</Popup>
+		  </Marker>
 		))}
 	  </MapContainer>
 	</div>
