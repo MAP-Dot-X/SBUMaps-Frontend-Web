@@ -56,9 +56,11 @@ function App() {
 		</button>
 
 		<div className={`sideNav ${isNavOpen ? 'open' : ''}`}>
-			<button className="backButton" onClick={selectedNav === '' ? closeNav : handleBackClick}>
+			<div style={{ padding: '10px' }}> 
+				<button className="backButton" onClick={selectedNav === '' ? closeNav : handleBackClick}>
 				{selectedNav === '' ? 'X' : '<<'}
-			</button>
+				</button>
+			</div>
 
 			{selectedNav === '' ? (
 				<>
