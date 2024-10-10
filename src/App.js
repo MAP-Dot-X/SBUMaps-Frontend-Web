@@ -6,6 +6,7 @@ import { MapContainer, TileLayer, Marker, Popup, Polyline } from 'react-leaflet'
 import { outerLoopData } from './data/bus/outerLoopData';
 import { innerLoopData } from './data/bus/innerLoopData';
 import { hospitalRouteData } from './data/bus/hospitalRouteData';
+import { expressEastData } from './data/bus/expressEastData';
 
 function App() {
   const [showOuterMarkers, setShowOuterMarkers] = useState(false);
@@ -14,6 +15,8 @@ function App() {
   const [showInnerPolyline, setShowInnerPolyline] = useState(false);
   const [showHospitalMarkers, setShowHospitalMarkers] = useState(false);
   const [showHospitalPolyline, setShowHospitalPolyline] = useState(false);
+  const [showExpressEastMarkers, setShowExpressEastMarkers] = useState(false);
+  const [showExpressEastPolyline, setShowExpressEastPolyline] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [selectedNav, setSelectedNav] = useState('');
 
@@ -30,6 +33,11 @@ function App() {
   const handleHospitalCheckboxChange = () => {
 	setShowHospitalMarkers(!showHospitalMarkers);
 	setShowHospitalPolyline(!showHospitalPolyline);
+  };
+
+  const handleExpressEastCheckboxChange = () => {
+	setShowExpressEastMarkers(!showExpressEastMarkers);
+	setShowExpressEastPolyline(!showExpressEastPolyline);
   };
 
   const handleNavClick = (nav) => {
@@ -74,29 +82,39 @@ function App() {
 				<div className="checkboxMenu">
 					{selectedNav === 'DoubleMap' && (
 						<div className="checkboxMenu">
-						<div className="toggleButton">
-							<div
-							className={`toggleSwitch ${showOuterMarkers ? 'on outer' : ''}`}
-							onClick={handleOuterCheckboxChange}
-							/>
-							<span>Outer Loop</span>
-						</div>
 
-						<div className="toggleButton">
-							<div
-							className={`toggleSwitch ${showInnerMarkers ? 'on inner' : ''}`} 
-							onClick={handleInnerCheckboxChange}
-							/>
-							<span>Inner Loop</span>
-						</div>
+							<div className="toggleButton">
+								<div
+								className={`toggleSwitch ${showOuterMarkers ? 'on outer' : ''}`}
+								onClick={handleOuterCheckboxChange}
+								/>
+								<span>Outer Loop</span>
+							</div>
 
-						<div className="toggleButton">
-							<div
-							className={`toggleSwitch ${showHospitalMarkers ? 'on hospital' : ''}`}
-							onClick={handleHospitalCheckboxChange}
-							/>
-							<span>Hospital/Chapin</span>
-						</div>
+							<div className="toggleButton">
+								<div
+								className={`toggleSwitch ${showInnerMarkers ? 'on inner' : ''}`} 
+								onClick={handleInnerCheckboxChange}
+								/>
+								<span>Inner Loop</span>
+							</div>
+
+							<div className="toggleButton">
+								<div
+								className={`toggleSwitch ${showHospitalMarkers ? 'on hospital' : ''}`}
+								onClick={handleHospitalCheckboxChange}
+								/>
+								<span>Hospital/Chapin</span>
+							</div>
+							
+							<div className="toggleButton">
+								<div
+								className={`toggleSwitch ${showExpressEastMarkers ? 'on express east' : ''}`}
+								onClick={handleExpressEastCheckboxChange}
+								/>
+								<span>Express East</span>
+							</div>
+
 						</div>
 					)}
 					{selectedNav === 'SBU Bikes' && <p>Content for SBU Bikes</p>}
@@ -164,6 +182,23 @@ function App() {
 			<Popup>{stop.name}</Popup>
 		  </Marker>
 		))}
+
+		{/* Express East Routes */}
+		{showExpressEastPolyline && (
+		  <Polyline
+			positions={expressEastData.busRoute}
+			color="blue"
+			weight={5}
+		  />
+		)}
+
+		{/* Express East Stops */}
+		{showExpressEastMarkers && expressEastData.busStops.map((stop, index) => (
+		  <Marker key={index} position={stop.position} icon={expressEastData.expressEastStopIcon}>
+			<Popup>{stop.name}</Popup>
+		  </Marker>
+		))}
+
 	  </MapContainer>
 	</div>
   );

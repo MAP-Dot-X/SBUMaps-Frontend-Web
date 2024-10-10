@@ -101,6 +101,10 @@
 	background-color: #8a2be2; 
 }
 
+.toggleSwitch.express {
+	background-color: #2b37e2; 
+}
+
 .toggleSwitch.on::before {
 	transform: translateX(20px);
 }

@@ -1,0 +1,29 @@
+import L from 'leaflet';
+
+export const expressEastData = {
+    expressEastStopIcon: new L.Icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41],
+    }),
+
+    busStops: [
+        { name: 'Lot 40', position: [40.89688182178211, -73.12666708166921] },
+        { name: 'South Campus East', position: [40.90444998452158, -73.12151113953891] },
+        { name: 'Life Sciences East', position: [40.910972960277036, -73.11892142090437] },
+        { name: 'East Side Dining', position: [40.916559838631436, -73.12109903854378] },
+        { name: 'Life Sciences West', position: [40.910969924136715, -73.11916997593116] },
+        { name: 'South Campus West', position: [40.904759187338726, -73.1217362526996] },
+    ],
+
+    busRoute: [
+        [40.89688182178211, -73.12666708166921], // Lot 40
+        [40.90444998452158, -73.12151113953891],
+        [40.916559838631436, -73.12109903854378],
+        [40.910972960277036, -73.11892142090437],
+        [40.910969924136715, -73.11916997593116],
+        [40.904759187338726, -73.1217362526996],
+    ]
+};
