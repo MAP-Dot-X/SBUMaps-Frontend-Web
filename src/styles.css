@@ -109,6 +109,10 @@
 	background-color: #e22b2b; 
 }
 
+.toggleSwitch.railroad {
+	background-color: #212121; 
+}
+
 .toggleSwitch.on::before {
 	transform: translateX(20px);
 }

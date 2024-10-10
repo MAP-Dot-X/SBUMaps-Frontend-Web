@@ -27,7 +27,7 @@ export const outerLoopData = {
 		{ name: 'West E', position: [40.91178912213096, -73.1344340068163] },
 		{ name: 'West G', position: [40.91298328524094, -73.13593527319979] },
 		{ name: 'West C', position: [40.9124405755571, -73.13337901698084] },
-		{ name: 'Nobel', position: [40.91298843080553, -73.12948816313441] }
+		{ name: 'Nobel', position: [40.91298843080553, -73.12948816313441] },
 	],
 	
 	busRoute: [
