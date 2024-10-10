@@ -10,6 +10,7 @@ import { hospitalExpressData } from './data/bus/hospitalExpressData';
 import { expressEastData } from './data/bus/expressEastData';
 import { expressWestData } from './data/bus/expressWestData';
 import { railroadData } from './data/bus/railroadData';
+import { bikeStationData } from './data/bike/bikeStationData';
 
 function App() {
   const [showOuterMarkers, setShowOuterMarkers] = useState(false);
@@ -26,6 +27,7 @@ function App() {
   const [showExpressWestPolyline, setShowExpressWestPolyline] = useState(false);
   const [showRailroadMarkers, setShowRailroadMarkers] = useState(false);
   const [showRailroadPolyline, setShowRailroadPolyline] = useState(false);
+  const [showBikeStations, setShowBikeStations] = useState(false); 
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [selectedNav, setSelectedNav] = useState('');
 
@@ -62,6 +64,10 @@ function App() {
   const handleRailroadToggleChange = () => {
 	setShowRailroadMarkers(!showRailroadMarkers);
 	setShowRailroadPolyline(!showRailroadPolyline);
+  };
+
+  const handleBikeStationToggleChange = () => {
+    setShowBikeStations(!showBikeStations); 
   };
 
   const handleNavClick = (nav) => {
@@ -205,7 +211,17 @@ function App() {
 
 						</div>
 					)}
-					{selectedNav === 'SBU Bikes' && <p>Content for SBU Bikes</p>}
+					{selectedNav === 'SBU Bikes' && (
+						<div className="checkboxMenu">
+							<div className="toggleButton">
+								<div
+								className={`toggleSwitch ${showBikeStations ? 'on bike' : ''}`}
+								onClick={handleBikeStationToggleChange}
+								/>
+								<span>Bike Stations</span>
+							</div>
+						</div>
+					)}
 					{selectedNav === 'Nutrislice' && <p>Content for Nutrislice</p>}
 					</div>
 			)}
@@ -333,6 +349,13 @@ function App() {
 		  <Marker key={index} position={stop.position} icon={railroadData.railroadStopIcon}>
 			<Popup>{stop.name}</Popup>
 		  </Marker>
+		))}
+
+		{/* Bike share stations */}
+        {showBikeStations && bikeStationData.bikeStations.map((station, index) => (
+			<Marker key={index} position={station.position} icon={bikeStationData.bikeStationIcon}> 
+				<Popup>{station.name}</Popup>
+			</Marker>
 		))}
 
 	  </MapContainer>

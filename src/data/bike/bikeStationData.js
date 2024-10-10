@@ -1,4 +1,15 @@
-export const bikeShareStations = [
+import L from 'leaflet';
+
+export const bikeStationData = {
+  bikeStationIcon: new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-grey.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41],
+  }),
+
+  bikeStations: [  
     { position: [40.91246286481021, -73.13028562817115], name: "West Side Dining Station" },
     { position: [40.911726, -73.132924], name: "West Apartments C Station" },
     { position: [40.913355, -73.134311], name: "West Apartments I Station" },
@@ -13,4 +24,5 @@ export const bikeShareStations = [
     { position: [40.919185, -73.120839], name: "James Hall Station" },
     { position: [40.920057, -73.128236], name: "LIRR Station" },
     { position: [40.921497, -73.126662], name: "Athletic Fields Station" },
-  ];
+  ]
+};

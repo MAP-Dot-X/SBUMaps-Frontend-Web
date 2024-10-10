@@ -141,6 +141,10 @@
 	transform: translateX(20px);
 }
   
+.toggleSwitch.bike {
+	background-color: #848484;
+}  
+
 .backButton {
 	display: flex; 
 	align-items: center; 
