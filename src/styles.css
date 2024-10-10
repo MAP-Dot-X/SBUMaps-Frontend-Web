@@ -117,6 +117,25 @@
 	background-color: #212121; 
 }
 
+.showAllNoneContainer {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 20px;
+}
+
+.showButton, .hideButton {
+	background-color: #007bff;
+	color: white;
+	border: none;
+	padding: 10px;
+	cursor: pointer;
+	border-radius: 5px;
+	width: 45%;
+}
+
+.showButton:hover, .hideButton:hover {
+	background-color: #0056b3;
+}  
 
 .toggleSwitch.on::before {
 	transform: translateX(20px);

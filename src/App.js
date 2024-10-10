@@ -163,6 +163,46 @@ function App() {
 								<span>Railroad</span>
 							</div>
 
+							<div className="showAllNoneContainer">
+								<button className="showButton" onClick={() => {
+								setShowOuterMarkers(true);
+								setShowOuterPolyline(true);
+								setShowInnerMarkers(true);
+								setShowInnerPolyline(true);
+								setShowHospitalMarkers(true);
+								setShowHospitalPolyline(true);
+								setShowHospitalExpressMarkers(true);
+								setShowHospitalExpressPolyline(true);
+								setShowExpressEastMarkers(true);
+								setShowExpressEastPolyline(true);
+								setShowExpressWestMarkers(true);
+								setShowExpressWestPolyline(true);
+								setShowRailroadMarkers(true);
+								setShowRailroadPolyline(true);
+								}}>
+								Show All
+								</button>
+
+								<button className="hideButton" onClick={() => {
+								setShowOuterMarkers(false);
+								setShowOuterPolyline(false);
+								setShowInnerMarkers(false);
+								setShowInnerPolyline(false);
+								setShowHospitalMarkers(false);
+								setShowHospitalPolyline(false);
+								setShowHospitalExpressMarkers(false);
+								setShowHospitalExpressPolyline(false);
+								setShowExpressEastMarkers(false);
+								setShowExpressEastPolyline(false);
+								setShowExpressWestMarkers(false);
+								setShowExpressWestPolyline(false);
+								setShowRailroadMarkers(false);
+								setShowRailroadPolyline(false);
+								}}>
+								Show None
+								</button>
+							</div>
+
 						</div>
 					)}
 					{selectedNav === 'SBU Bikes' && <p>Content for SBU Bikes</p>}
