@@ -101,8 +101,12 @@
 	background-color: #8a2be2; 
 }
 
-.toggleSwitch.express {
+.toggleSwitch.expressE {
 	background-color: #2b37e2; 
+}
+
+.toggleSwitch.expressW {
+	background-color: #e22b2b; 
 }
 
 .toggleSwitch.on::before {

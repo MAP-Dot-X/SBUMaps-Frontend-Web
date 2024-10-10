@@ -7,6 +7,7 @@ import { outerLoopData } from './data/bus/outerLoopData';
 import { innerLoopData } from './data/bus/innerLoopData';
 import { hospitalRouteData } from './data/bus/hospitalRouteData';
 import { expressEastData } from './data/bus/expressEastData';
+import { expressWestData } from './data/bus/expressWestData';
 
 function App() {
   const [showOuterMarkers, setShowOuterMarkers] = useState(false);
@@ -17,27 +18,34 @@ function App() {
   const [showHospitalPolyline, setShowHospitalPolyline] = useState(false);
   const [showExpressEastMarkers, setShowExpressEastMarkers] = useState(false);
   const [showExpressEastPolyline, setShowExpressEastPolyline] = useState(false);
+  const [showExpressWestMarkers, setShowExpressWestMarkers] = useState(false);
+  const [showExpressWestPolyline, setShowExpressWestPolyline] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [selectedNav, setSelectedNav] = useState('');
 
-  const handleOuterCheckboxChange = () => {
+  const handleOuterToggleChange = () => {
 	setShowOuterMarkers(!showOuterMarkers);
 	setShowOuterPolyline(!showOuterPolyline);
   };
 
-  const handleInnerCheckboxChange = () => {
+  const handleInnerToggleChange = () => {
 	setShowInnerMarkers(!showInnerMarkers);
 	setShowInnerPolyline(!showInnerPolyline);
   };
 
-  const handleHospitalCheckboxChange = () => {
+  const handleHospitalToggleChange = () => {
 	setShowHospitalMarkers(!showHospitalMarkers);
 	setShowHospitalPolyline(!showHospitalPolyline);
   };
 
-  const handleExpressEastCheckboxChange = () => {
+  const handleExpressEastToggleChange = () => {
 	setShowExpressEastMarkers(!showExpressEastMarkers);
 	setShowExpressEastPolyline(!showExpressEastPolyline);
+  };
+
+  const handleExpressWestToggleChange = () => {
+	setShowExpressWestMarkers(!showExpressWestMarkers);
+	setShowExpressWestPolyline(!showExpressWestPolyline);
   };
 
   const handleNavClick = (nav) => {
@@ -86,7 +94,7 @@ function App() {
 							<div className="toggleButton">
 								<div
 								className={`toggleSwitch ${showOuterMarkers ? 'on outer' : ''}`}
-								onClick={handleOuterCheckboxChange}
+								onClick={handleOuterToggleChange}
 								/>
 								<span>Outer Loop</span>
 							</div>
@@ -94,7 +102,7 @@ function App() {
 							<div className="toggleButton">
 								<div
 								className={`toggleSwitch ${showInnerMarkers ? 'on inner' : ''}`} 
-								onClick={handleInnerCheckboxChange}
+								onClick={handleInnerToggleChange}
 								/>
 								<span>Inner Loop</span>
 							</div>
@@ -102,17 +110,25 @@ function App() {
 							<div className="toggleButton">
 								<div
 								className={`toggleSwitch ${showHospitalMarkers ? 'on hospital' : ''}`}
-								onClick={handleHospitalCheckboxChange}
+								onClick={handleHospitalToggleChange}
 								/>
 								<span>Hospital/Chapin</span>
 							</div>
 							
 							<div className="toggleButton">
 								<div
-								className={`toggleSwitch ${showExpressEastMarkers ? 'on express east' : ''}`}
-								onClick={handleExpressEastCheckboxChange}
+								className={`toggleSwitch ${showExpressEastMarkers ? 'on expressE' : ''}`}
+								onClick={handleExpressEastToggleChange}
 								/>
 								<span>Express East</span>
+							</div>
+
+							<div className="toggleButton">
+								<div
+								className={`toggleSwitch ${showExpressWestMarkers ? 'on expressW' : ''}`}
+								onClick={handleExpressWestToggleChange}
+								/>
+								<span>Express West</span>
 							</div>
 
 						</div>
@@ -195,6 +211,22 @@ function App() {
 		{/* Express East Stops */}
 		{showExpressEastMarkers && expressEastData.busStops.map((stop, index) => (
 		  <Marker key={index} position={stop.position} icon={expressEastData.expressEastStopIcon}>
+			<Popup>{stop.name}</Popup>
+		  </Marker>
+		))}
+
+		{/* Express West Routes */}
+		{showExpressWestPolyline && (
+		  <Polyline
+			positions={expressWestData.busRoute}
+			color="red"
+			weight={5}
+		  />
+		)}
+
+		{/* Express West Stops */}
+		{showExpressWestMarkers && expressWestData.busStops.map((stop, index) => (
+		  <Marker key={index} position={stop.position} icon={expressWestData.expressWestStopIcon}>
 			<Popup>{stop.name}</Popup>
 		  </Marker>
 		))}
