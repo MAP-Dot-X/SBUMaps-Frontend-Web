@@ -56,52 +56,50 @@ function App() {
 		</button>
 
 		<div className={`sideNav ${isNavOpen ? 'open' : ''}`}>
-		  <button className="backButton" onClick={closeNav}>X</button>
+			<button className="backButton" onClick={selectedNav === '' ? closeNav : handleBackClick}>
+				{selectedNav === '' ? 'X' : '<<'}
+			</button>
 
-		  {selectedNav === '' ? (
-			<>
-			  <button className="navButton" onClick={() => handleNavClick('SBU Bikes')}>SBU Bikes</button>
-			  <button className="navButton" onClick={() => handleNavClick('DoubleMap')}>DoubleMap</button>
-			  <button className="navButton" onClick={() => handleNavClick('Nutrislice')}>Nutrislice</button>
-			</>
-		  ) : (
-			<div className="checkboxMenu">
-
-				{selectedNav === 'DoubleMap' && (
+			{selectedNav === '' ? (
+				<>
+				<button className="navButton" onClick={() => handleNavClick('SBU Bikes')}>SBU Bikes</button>
+				<button className="navButton" onClick={() => handleNavClick('DoubleMap')}>DoubleMap</button>
+				<button className="navButton" onClick={() => handleNavClick('Nutrislice')}>Nutrislice</button>
+				</>
+			) : (
 				<div className="checkboxMenu">
-					<button className="backButton" onClick={handleBackClick}> &lt;&lt;</button>
-
+				{selectedNav === 'DoubleMap' && (
+					<div className="checkboxMenu">
 					<div className="toggleButton">
-					<div
+						<div
 						className={`toggleSwitch ${showOuterMarkers ? 'on' : ''}`}
 						onClick={handleOuterCheckboxChange}
-					/>
-					<span>Outer Bus</span>
+						/>
+						<span>Outer Bus</span>
 					</div>
 
 					<div className="toggleButton">
-					<div
+						<div
 						className={`toggleSwitch ${showInnerMarkers ? 'on' : ''}`}
 						onClick={handleInnerCheckboxChange}
-					/>
-					<span>Inner Bus</span>
+						/>
+						<span>Inner Bus</span>
 					</div>
 
 					<div className="toggleButton">
-					<div
+						<div
 						className={`toggleSwitch ${showHospitalMarkers ? 'on' : ''}`}
 						onClick={handleHospitalCheckboxChange}
-					/>
-					<span>Hospital Bus</span>
+						/>
+						<span>Hospital Bus</span>
 					</div>
-				</div>
+					</div>
 				)}
-
-			  {selectedNav === 'SBU Bikes' && <p>Content for SBU Bikes</p>}
-			  {selectedNav === 'Nutrislice' && <p>Content for Nutrislice</p>}
+				{selectedNav === 'SBU Bikes' && <p>Content for SBU Bikes</p>}
+				{selectedNav === 'Nutrislice' && <p>Content for Nutrislice</p>}
+				</div>
+			)}
 			</div>
-		  )}
-		</div>
 	  </div>
 
 	  {/* Map Container */}
