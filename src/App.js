@@ -70,36 +70,36 @@ function App() {
 				</>
 			) : (
 				<div className="checkboxMenu">
-				{selectedNav === 'DoubleMap' && (
-					<div className="checkboxMenu">
-					<div className="toggleButton">
-						<div
-						className={`toggleSwitch ${showOuterMarkers ? 'on' : ''}`}
-						onClick={handleOuterCheckboxChange}
-						/>
-						<span>Outer Bus</span>
-					</div>
+					{selectedNav === 'DoubleMap' && (
+						<div className="checkboxMenu">
+						<div className="toggleButton">
+							<div
+							className={`toggleSwitch ${showOuterMarkers ? 'on outer' : ''}`}
+							onClick={handleOuterCheckboxChange}
+							/>
+							<span>Outer Bus</span>
+						</div>
 
-					<div className="toggleButton">
-						<div
-						className={`toggleSwitch ${showInnerMarkers ? 'on' : ''}`}
-						onClick={handleInnerCheckboxChange}
-						/>
-						<span>Inner Bus</span>
-					</div>
+						<div className="toggleButton">
+							<div
+							className={`toggleSwitch ${showInnerMarkers ? 'on inner' : ''}`} 
+							onClick={handleInnerCheckboxChange}
+							/>
+							<span>Inner Bus</span>
+						</div>
 
-					<div className="toggleButton">
-						<div
-						className={`toggleSwitch ${showHospitalMarkers ? 'on' : ''}`}
-						onClick={handleHospitalCheckboxChange}
-						/>
-						<span>Hospital Bus</span>
+						<div className="toggleButton">
+							<div
+							className={`toggleSwitch ${showHospitalMarkers ? 'on hospital' : ''}`}
+							onClick={handleHospitalCheckboxChange}
+							/>
+							<span>Hospital Bus</span>
+						</div>
+						</div>
+					)}
+					{selectedNav === 'SBU Bikes' && <p>Content for SBU Bikes</p>}
+					{selectedNav === 'Nutrislice' && <p>Content for Nutrislice</p>}
 					</div>
-					</div>
-				)}
-				{selectedNav === 'SBU Bikes' && <p>Content for SBU Bikes</p>}
-				{selectedNav === 'Nutrislice' && <p>Content for Nutrislice</p>}
-				</div>
 			)}
 			</div>
 	  </div>
