@@ -9,6 +9,7 @@ import { hospitalRouteData } from './data/bus/hospitalRouteData';
 import { expressEastData } from './data/bus/expressEastData';
 import { expressWestData } from './data/bus/expressWestData';
 import { railroadData } from './data/bus/railroadData';
+import { hospitalExpressData } from './data/bus/hospitalExpressData';
 
 function App() {
   const [showOuterMarkers, setShowOuterMarkers] = useState(false);
@@ -23,6 +24,8 @@ function App() {
   const [showExpressWestPolyline, setShowExpressWestPolyline] = useState(false);
   const [showRailroadMarkers, setShowRailroadMarkers] = useState(false);
   const [showRailroadPolyline, setShowRailroadPolyline] = useState(false);
+  const [showHospitalExpressMarkers, setShowHospitalExpressMarkers] = useState(false);
+  const [showHospitalExpressPolyline, setShowHospitalExpressPolyline] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [selectedNav, setSelectedNav] = useState('');
 
@@ -54,6 +57,11 @@ function App() {
   const handleRailroadToggleChange = () => {
 	setShowRailroadMarkers(!showRailroadMarkers);
 	setShowRailroadPolyline(!showRailroadPolyline);
+  };
+  
+  const handleHospitalExpressToggleChange = () => {
+	setShowHospitalExpressMarkers(!showHospitalExpressMarkers);
+	setShowHospitalExpressPolyline(!showHospitalExpressPolyline);
   };
 
   const handleNavClick = (nav) => {
@@ -145,6 +153,14 @@ function App() {
 								onClick={handleRailroadToggleChange}
 								/>
 								<span>Railroad</span>
+							</div>
+
+							<div className="toggleButton">
+								<div
+								className={`toggleSwitch ${showHospitalExpressMarkers ? 'on hospitalExpress' : ''}`}
+								onClick={handleHospitalExpressToggleChange}
+								/>
+								<span>Hospital Express</span>
 							</div>
 
 						</div>
@@ -259,6 +275,22 @@ function App() {
 		{/* Railroad Stops */}
 		{showRailroadMarkers && railroadData.busStops.map((stop, index) => (
 		  <Marker key={index} position={stop.position} icon={railroadData.railroadStopIcon}>
+			<Popup>{stop.name}</Popup>
+		  </Marker>
+		))}
+
+		{/* Hospital Express Routes */}
+		{showHospitalExpressPolyline && (
+		  <Polyline
+			positions={hospitalExpressData.busRoute}
+			color="pink"
+			weight={5}
+		  />
+		)}
+
+		{/* Railroad Stops */}
+		{showHospitalExpressMarkers && hospitalExpressData.busStops.map((stop, index) => (
+		  <Marker key={index} position={stop.position} icon={hospitalExpressData.hospitalExpressStopIcon}>
 			<Popup>{stop.name}</Popup>
 		  </Marker>
 		))}

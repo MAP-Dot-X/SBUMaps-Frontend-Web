@@ -113,6 +113,10 @@
 	background-color: #212121; 
 }
 
+.toggleSwitch.hospitalExpress {
+	background-color: #e22bca; 
+}
+
 .toggleSwitch.on::before {
 	transform: translateX(20px);
 }
