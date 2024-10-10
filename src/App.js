@@ -56,11 +56,13 @@ function App() {
 		</button>
 
 		<div className={`sideNav ${isNavOpen ? 'open' : ''}`}>
-			<div style={{ padding: '10px' }}> 
+			<div style={{ padding: '10px', display: 'flex', alignItems: 'center' }}> 
 				<button className="backButton" onClick={selectedNav === '' ? closeNav : handleBackClick}>
-				{selectedNav === '' ? 'X' : '<<'}
+					{selectedNav === '' ? 'X' : '<<'}
 				</button>
+				{selectedNav !== '' && <span className="navTitle">Bus Routes</span>}
 			</div>
+
 
 			{selectedNav === '' ? (
 				<>

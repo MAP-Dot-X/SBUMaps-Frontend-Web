@@ -123,3 +123,10 @@
 	background-color: #f0f0f0; 
 	border-color: #ccc; 
 }
+
+.navTitle {
+	font-size: 16px;
+	margin-left: 40px;
+	font-weight: bold;
+  }
+  
