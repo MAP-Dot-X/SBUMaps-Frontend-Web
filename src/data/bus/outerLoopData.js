@@ -23,7 +23,7 @@ export const outerLoopData = {
 		{ name: 'Roth/Tabler East', position: [40.91037848484324, -73.12411675994503] },
 		{ name: 'Tabler Steps East', position: [40.91105340881635, -73.12595430963177] },
 		{ name: 'Roosevelt East', position: [40.91191488425261, -73.12762118320369] },
-		{ name: 'Greeley', position: [40.91113456483082, -73.13132060361556] },
+		{ name: 'Greeley', position: [40.91112682497286, -73.13131249668088] },
 		{ name: 'West E', position: [40.91178912213096, -73.1344340068163] },
 		{ name: 'West G', position: [40.91298328524094, -73.13593527319979] },
 		{ name: 'West C', position: [40.9124405755571, -73.13337901698084] },
