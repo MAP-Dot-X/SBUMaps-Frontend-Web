@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import './styles.css';
 import 'leaflet/dist/leaflet.css';
@@ -11,8 +11,10 @@ import { expressEastData } from './data/bus/expressEastData';
 import { expressWestData } from './data/bus/expressWestData';
 import { railroadData } from './data/bus/railroadData';
 import { bikeStationData } from './data/bike/bikeStationData';
+import L from 'leaflet';
 
 function App() {
+	const [busData, setBusData] = useState([]); 
 	const [showOuterMarkers, setShowOuterMarkers] = useState(false);
 	const [showOuterPolyline, setShowOuterPolyline] = useState(false);
 	const [showInnerMarkers, setShowInnerMarkers] = useState(false);
@@ -30,6 +32,29 @@ function App() {
 	const [showBikeStations, setShowBikeStations] = useState(false); 
 	const [isNavOpen, setIsNavOpen] = useState(false);
   	const [selectedNav, setSelectedNav] = useState('');
+
+	const busIcon = new L.Icon({
+		iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-grey.png', 
+		iconSize: [25, 25],
+		iconAnchor: [12, 25],
+		popupAnchor: [0, -25],
+  	});
+
+	const fetchBusData = async () => {
+		try {
+		const response = await fetch('/map/v2/buses');
+		const data = await response.json();
+		setBusData(data);
+		} catch (error) {
+		console.error("Failed to fetch bus data:", error);
+		}
+	};
+	  
+	useEffect(() => {
+		fetchBusData(); 
+		const interval = setInterval(fetchBusData, 100); 
+		return () => clearInterval(interval); 
+	}, []);
 
 	const handleOuterToggleChange = () => {
 		setShowOuterMarkers(!showOuterMarkers);
@@ -237,6 +262,19 @@ function App() {
 			attribution='&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 			url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 			/>
+
+			{/* Live bus locations */}
+			{busData.map((bus) => (
+			<Marker key={bus.id} position={[bus.lat, bus.lon]} icon={busIcon}>
+				<Popup>
+				<div>
+					<strong>Bus {bus.name}</strong><br />
+					Heading: {bus.heading}°<br />
+					Last stop: {bus.lastStop}
+				</div>
+				</Popup>
+			</Marker>
+			))}
 
 			{/* Outer Loop Routes */}
 			{showOuterPolyline && (
