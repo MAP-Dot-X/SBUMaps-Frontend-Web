@@ -52,7 +52,7 @@ function App() {
 	  
 	useEffect(() => {
 		fetchBusData(); 
-		const interval = setInterval(fetchBusData, 100); 
+		const interval = setInterval(fetchBusData, 1000); 
 		return () => clearInterval(interval); 
 	}, []);
 
