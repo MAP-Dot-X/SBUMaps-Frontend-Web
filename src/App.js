@@ -32,9 +32,17 @@ function App() {
 	const [showBikeStations, setShowBikeStations] = useState(false); 
 	const [isNavOpen, setIsNavOpen] = useState(false);
   	const [selectedNav, setSelectedNav] = useState('');
+	const outerLoopRoutes = [534]; 
 
 	const busIcon = new L.Icon({
 		iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-grey.png', 
+		iconSize: [25, 25],
+		iconAnchor: [12, 25],
+		popupAnchor: [0, -25],
+  	});
+
+	const outerLoopBusIcon = new L.Icon({
+		iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png', 
 		iconSize: [25, 25],
 		iconAnchor: [12, 25],
 		popupAnchor: [0, -25],
@@ -264,17 +272,24 @@ function App() {
 			/>
 
 			{/* Live bus locations */}
-			{busData.map((bus) => (
-			<Marker key={bus.id} position={[bus.lat, bus.lon]} icon={busIcon}>
-				<Popup>
-				<div>
-					<strong>Bus {bus.name}</strong><br />
-					Heading: {bus.heading}°<br />
-					Last stop: {bus.lastStop}
-				</div>
-				</Popup>
-			</Marker>
-			))}
+			{busData.map((bus) => {
+				const isOuterLoopBus = outerLoopRoutes.includes(bus.route);
+
+				if (showOuterMarkers && isOuterLoopBus) {
+					return (
+						<Marker key={bus.id} position={[bus.lat, bus.lon]} icon={outerLoopBusIcon}>
+							<Popup>
+								<div>
+									<strong>Bus {bus.name}</strong><br />
+									Heading: {bus.heading}°<br />
+									Last stop: {bus.lastStop}
+								</div>
+							</Popup>
+						</Marker>
+					);
+				}
+				return null; 
+			})}
 
 			{/* Outer Loop Routes */}
 			{showOuterPolyline && (
