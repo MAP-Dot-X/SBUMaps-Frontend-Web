@@ -35,6 +35,7 @@ function App() {
 	const outerLoopRoutes = [534]; 
 	const innerLoopRoutes = [533];
 	const hospitalRoutes = [531];
+	const expressEastRoutes = [529];
 
 	const busIcon = new L.Icon({
 		iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-grey.png', 
@@ -59,6 +60,13 @@ function App() {
 
 	const hospitalBusIcon = new L.Icon({
 		iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-violet.png', 
+		iconSize: [25, 25],
+		iconAnchor: [12, 25],
+		popupAnchor: [0, -25],
+  	});
+
+	const expressEastBusIcon = new L.Icon({
+		iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png', 
 		iconSize: [25, 25],
 		iconAnchor: [12, 25],
 		popupAnchor: [0, -25],
@@ -292,6 +300,7 @@ function App() {
 				const isOuterLoopBus = outerLoopRoutes.includes(bus.route);
 				const isInnerLoopBus = innerLoopRoutes.includes(bus.route);
 				const isHospitalBus = hospitalRoutes.includes(bus.route);
+				const isExpressEastBus = expressEastRoutes.includes(bus.route);
 
 				if (showOuterMarkers && isOuterLoopBus) {
 					return (
@@ -324,6 +333,20 @@ function App() {
 				if (showHospitalMarkers && isHospitalBus) {
 					return (
 						<Marker key={bus.id} position={[bus.lat, bus.lon]} icon={hospitalBusIcon}>
+							<Popup>
+								<div>
+									<strong>Bus {bus.name}</strong><br />
+									Heading: {bus.heading}°<br />
+									Last stop: {bus.lastStop}
+								</div>
+							</Popup>
+						</Marker>
+					);
+				}
+
+				if (showExpressEastMarkers && isExpressEastBus) {
+					return (
+						<Marker key={bus.id} position={[bus.lat, bus.lon]} icon={expressEastBusIcon}>
 							<Popup>
 								<div>
 									<strong>Bus {bus.name}</strong><br />
