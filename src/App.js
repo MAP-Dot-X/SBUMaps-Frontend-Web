@@ -33,6 +33,7 @@ function App() {
 	const [isNavOpen, setIsNavOpen] = useState(false);
   	const [selectedNav, setSelectedNav] = useState('');
 	const outerLoopRoutes = [534]; 
+	const innerLoopRoutes = [533];
 
 	const busIcon = new L.Icon({
 		iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-grey.png', 
@@ -43,6 +44,13 @@ function App() {
 
 	const outerLoopBusIcon = new L.Icon({
 		iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png', 
+		iconSize: [25, 25],
+		iconAnchor: [12, 25],
+		popupAnchor: [0, -25],
+  	});
+
+	  const innerLoopBusIcon = new L.Icon({
+		iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-orange.png', 
 		iconSize: [25, 25],
 		iconAnchor: [12, 25],
 		popupAnchor: [0, -25],
@@ -274,6 +282,7 @@ function App() {
 			{/* Live bus locations */}
 			{busData.map((bus) => {
 				const isOuterLoopBus = outerLoopRoutes.includes(bus.route);
+				const isInnerLoopBus = innerLoopRoutes.includes(bus.route);
 
 				if (showOuterMarkers && isOuterLoopBus) {
 					return (
@@ -288,6 +297,21 @@ function App() {
 						</Marker>
 					);
 				}
+
+				if (showInnerMarkers && isInnerLoopBus) {
+					return (
+						<Marker key={bus.id} position={[bus.lat, bus.lon]} icon={innerLoopBusIcon}>
+							<Popup>
+								<div>
+									<strong>Bus {bus.name}</strong><br />
+									Heading: {bus.heading}°<br />
+									Last stop: {bus.lastStop}
+								</div>
+							</Popup>
+						</Marker>
+					);
+				}
+
 				return null; 
 			})}
 
