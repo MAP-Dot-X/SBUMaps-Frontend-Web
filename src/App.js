@@ -56,9 +56,9 @@ function App() {
 
 	const innerLoopBusIcon = new L.Icon({
 		iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-orange.png', 
-		iconSize: [35, 35],  
-		iconAnchor: [17, 35],  
-		popupAnchor: [0, -35],
+		iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
 	});
 
 	const hospitalBusIcon = new L.Icon({
