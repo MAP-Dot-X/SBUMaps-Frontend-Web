@@ -63,9 +63,10 @@ function App() {
 
 	const hospitalBusIcon = new L.Icon({
 		iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-violet.png', 
-		iconSize: [25, 25],
-		iconAnchor: [12, 25],
-		popupAnchor: [0, -25],
+		iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41],
   	});
 
 	const expressEastBusIcon = new L.Icon({
