@@ -2,11 +2,11 @@ import L from 'leaflet';
 
 export const innerLoopData = {
     innerLoopStopIcon: new L.Icon({
-            iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-orange.png',
-            iconSize: [25, 41],
-            iconAnchor: [12, 41],
-            popupAnchor: [1, -34],
-            shadowSize: [41, 41],
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-orange.png',
+        iconSize: [15, 25], 
+        iconAnchor: [7, 25],
+        popupAnchor: [1, -24],
+        shadowSize: [25, 25],
     }),
         
     busStops: [
