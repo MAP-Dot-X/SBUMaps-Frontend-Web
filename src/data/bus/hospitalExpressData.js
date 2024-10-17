@@ -3,10 +3,10 @@ import L from 'leaflet';
 export const hospitalExpressData = {
     hospitalExpressStopIcon: new L.Icon({
         iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-violet.png',
-        iconSize: [25, 41],
-        iconAnchor: [12, 41],
-        popupAnchor: [1, -34],
-        shadowSize: [41, 41],
+        iconSize: [15, 25], 
+        iconAnchor: [7, 25],
+        popupAnchor: [1, -24],
+        shadowSize: [25, 25],
     }),
 
     busStops: [
