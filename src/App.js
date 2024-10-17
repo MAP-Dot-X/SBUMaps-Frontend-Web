@@ -39,14 +39,6 @@ function App() {
 	const expressWestRoutes = [530];
 	const railroadRoutes = [537];
 
-
-	const busIcon = new L.Icon({
-		iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-grey.png', 
-		iconSize: [25, 25],
-		iconAnchor: [12, 25],
-		popupAnchor: [0, -25],
-  	});
-
 	const outerLoopBusIcon = new L.Icon({
 		iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png', 
 		iconSize: [25, 41],
