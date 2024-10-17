@@ -77,9 +77,9 @@ function App() {
 
 	const expressWestBusIcon = new L.Icon({
 		iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png', 
-		iconSize: [25, 25],
-		iconAnchor: [12, 25],
-		popupAnchor: [0, -25],
+		iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
   	});
 
 	const railroadBusIcon = new L.Icon({
