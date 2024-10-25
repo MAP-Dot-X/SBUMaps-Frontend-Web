@@ -519,7 +519,14 @@ function App() {
 				</Marker>
 			))}
 
+			{/* Fixed Button */}
+			<button className="upload-button" onClick={() => window.location.href = 'http://localhost:3001'}>
+				Upload
+			</button>
+
 		</MapContainer>
+			
+		
 		</div>
 	);
 }
