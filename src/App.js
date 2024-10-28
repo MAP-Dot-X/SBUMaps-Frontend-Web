@@ -290,7 +290,7 @@ function App() {
 						{selectedNav === 'Nutrislice' && <p>Content for Nutrislice</p>}
 					</div>
 				)}
-				</div>
+			</div>
 		</div>
 
 		{/* Map Container */}
