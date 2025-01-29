@@ -1,0 +1,36 @@
+{
+    "WSD": {
+      "title": "West Side Dining",
+      "lastUpdated": "Last updated: January 27, 2025",
+      "type": "Dining Hall",
+      "address": "300 Circle Rd, Stony Brook University, NY 11790",
+      "hours": {
+        "Monday": "7:30am - 12am",
+        "Tuesday": "7:30am - 12am",
+        "Wednesday": "7:30am - 12am",
+        "Thursday": "7:30am - 12am",
+        "Friday": "7:30am - 12am",
+        "Saturday": "9am - 11pm",
+        "Sunday": "9am - 11pm"
+      },
+      "doorPrices": {
+        "Breakfast": "$8.75",
+        "Lunch/Brunch": "$15",
+        "Dinner": "$16",
+        "Late Night": "$10.50"
+      },
+      "mealPeriods": {
+        "Breakfast (Mon - Fri)": "7:30am to 10:59am",
+        "Lunch (Mon - Fri)": "11am to 3:59pm",
+        "Brunch (Sat - Sun)": "9am to 3:59pm",
+        "Dinner (Mon - Fri)": "4pm to 9:59pm",
+        "Dinner (Sat - Sun)": "4pm to 11pm",
+        "Late Night (Mon - Fri)": "10pm to midnight"
+      },
+      "website": "https://www.stonybrook.edu/commcms/dining/hours.php",
+      "phone": "631-632-1086",
+      "email": "",
+      "menu": "stonybrook.nutrislice.com"
+    }
+  }
+  
