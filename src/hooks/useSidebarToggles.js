@@ -1,4 +1,3 @@
-// src/hooks/useSidebarToggles.js
 import { useState } from 'react';
 
 export const useSidebarToggles = () => {

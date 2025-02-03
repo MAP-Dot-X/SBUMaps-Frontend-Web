@@ -14,10 +14,9 @@ export const useToggleStates = () => {
     ...diningHallStates,
     ...academicBuildingStates,
     ...residentialBuildingStates,
-    ...affiliateDiningStates, // Add affiliate dining states
+    ...affiliateDiningStates,
   };
 
-  // Combined handler to toggle between all categories
   const handleToggle = (name) => {
     if (diningHallStates.hasOwnProperty(name)) {
       handleDiningHallToggle(name);
@@ -26,7 +25,7 @@ export const useToggleStates = () => {
     } else if (residentialBuildingStates.hasOwnProperty(name)) {
       handleResidentialBuildingToggle(name);
     } else if (affiliateDiningStates.hasOwnProperty(name)) {
-      handleAffiliateDiningToggle(name); // Handle affiliate dining toggle
+      handleAffiliateDiningToggle(name);
     }
   };
 

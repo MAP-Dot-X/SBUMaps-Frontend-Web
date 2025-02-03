@@ -1,24 +1,16 @@
-// src/hooks/useToggleDiningHall.js
-import { useState } from 'react';
+import { useToggleContext } from '../context/ToggleContext';
 
 export const useToggleDiningHalls = () => {
-  const [toggleStates, setToggleStates] = useState([]);
-  
+  const { toggleStates, handleToggleChange } = useToggleContext();
+
   const diningOptions = [
-    { name: "East Side Dining", location: "East Side Dining" },
     { name: "West Side Dining", location: "West Side Dining" },
+    { name: "East Side Dining", location: "East Side Dining" },
   ];
 
-  if (toggleStates.length === 0) {
-    setToggleStates(new Array(diningOptions.length).fill(false));
-  }
-
   const handleToggle = (index) => {
-    setToggleStates((prevStates) => {
-      const newStates = [...prevStates];
-      newStates[index] = !newStates[index];
-      return newStates;
-    });
+    const itemName = diningOptions[index].name;
+    handleToggleChange(itemName);
   };
 
   return [toggleStates, handleToggle, diningOptions];

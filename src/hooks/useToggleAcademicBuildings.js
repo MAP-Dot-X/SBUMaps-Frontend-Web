@@ -1,4 +1,3 @@
-// src/hooks/useToggleDiningHall.js
 import { useState } from 'react';
 
 export const useToggleAcademicBuildings = () => {

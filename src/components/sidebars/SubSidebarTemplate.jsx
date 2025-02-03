@@ -77,13 +77,13 @@ const SubSidebarTemplate = ({
             {/* Toggle Switch */}
             <div
               className={`relative inline-block w-12 h-6 cursor-pointer transition-all duration-300 rounded-full ${
-                toggleStates[index] ? 'bg-green-500' : 'bg-gray-400'
+                toggleStates[name] ? 'bg-green-500' : 'bg-gray-400'
               }`}
               onClick={(e) => handleToggleClick(e, index)}
             >
               <div
                 className={`absolute w-6 h-6 bg-white rounded-full shadow-md transition-transform duration-300 ${
-                  toggleStates[index] ? 'translate-x-6' : 'translate-x-0'
+                  toggleStates[name] ? 'translate-x-6' : 'translate-x-0'
                 }`}
               ></div>
             </div>

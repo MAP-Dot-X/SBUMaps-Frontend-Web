@@ -2,15 +2,14 @@ import React from 'react';
 import { Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import markerIcon from '../../assets/marker.png';
-import diningHallLocations from '../../data/location/DiningHallLocation.json';
 import { useToggleContext } from '../../context/ToggleContext';
 
-const DiningHallMarker = () => {
+const MarkerComponent = ({ locations }) => {
   const { toggleStates } = useToggleContext();
 
   return (
     <>
-      {diningHallLocations.map(
+      {locations.map(
         (location, index) =>
           toggleStates[location.name] && (
             <Marker
@@ -22,6 +21,7 @@ const DiningHallMarker = () => {
                 iconAnchor: [16, 32],
               })}
             >
+              <Popup>{location.name}</Popup>
             </Marker>
           )
       )}
@@ -29,4 +29,4 @@ const DiningHallMarker = () => {
   );
 };
 
-export default DiningHallMarker;
+export default MarkerComponent;
