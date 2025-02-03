@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 export const useToggleAffiliateDinings = () => {
   const [toggleStates, setToggleStates] = useState([]);
-  // An array to allow duplicates and associate each dining option with its location
+  
   const diningOptions = [
     { name: "Carvel", location: "East Side Dining" },
     { name: "Cocina Fresca", location: "East Side Dining" },
@@ -28,6 +28,7 @@ export const useToggleAffiliateDinings = () => {
     { name: "Smash n' Shake", location: "Roth Cafe" },
     { name: "Starbucks", location: "Hospital Lobby" },
     { name: "Starbucks", location: "Melville Library" },
+    { name: "Starbucks", location: "Roth Cafe" },
     { name: "Subway", location: "Roth Cafe" },
     { name: "We Proudly Serve Starbucks", location: "Administration Building" },
     { name: "Wicked Wingz", location: "East Side Dining" },
